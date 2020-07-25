@@ -6,4 +6,4 @@ TIME COMPLEXITY:
    h = inverted "g"
    q = quantity of duplicates
    BEST CASE: O(2n + 3M)
-   WORST CASE: O(2n + 3M + 3nM)
+   WORST CASE: O(2n + 3nM)
