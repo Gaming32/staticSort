@@ -8,12 +8,30 @@ for i in range(number_quantity):
 def thatsOvens_staticSort(a):
     M = max(a) 
     size = len(a)
-    for i in range(M + 1):
-        a.append([])
-    for i in range(size):
-        a[a[0] + size].append(a[0])
-        a.remove(a[0])
-        size -= 1
+    if M > (size - 1):
+        for i in range(M - size + 1):
+            a.append([])
+    a.insert(0, [])
+    counter = 0
+    listcount = 0
+    while listcount < size:
+        if type(a[counter]) is list:
+            counter += 1
+        else:
+            if int(a[counter]) == counter:
+                temp = a[counter]
+                a[counter] = [temp]
+            else:
+                if type(a[a[counter]]) is list:
+                    a[a[counter]].append(a[counter])
+                    a[counter] = []
+                else:
+                    temp = int(a[a[counter]])
+                    a[a[counter]] = [a[counter]]
+                    a[counter] = temp
+            listcount += 1
+        if counter > size:
+            counter = 0
     size = len(a)
     counter = 0
     for i in range(size):
