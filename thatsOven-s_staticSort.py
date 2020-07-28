@@ -24,8 +24,6 @@ def thatsOvens_staticSort(a):
                     a[a[counter]] = [a[counter]]
                     a[counter] = temp
             listcount += 1
-        if counter > size:
-            counter = 0
     size = len(a)
     counter = 0
     for i in range(size):
