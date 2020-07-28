@@ -4,7 +4,8 @@ def thatsOvens_staticSort(a):
     if M > (size - 1):
         for i in range(M - size + 1):
             a.append([])
-    a.insert(0, [])
+    if M == (size - 1):
+        a.insert(0, [])
     counter = 0
     listcount = 0
     while listcount < size:
