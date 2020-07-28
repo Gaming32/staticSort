@@ -11,7 +11,7 @@ def thatsOvens_staticSort(a):
     if M > (size - 1):
         for i in range(M - size + 1):
             a.append([])
-    if M == (size - 1):
+    if M == size:
         a.insert(0, [])
     counter = 0
     listcount = 0
