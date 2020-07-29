@@ -13,8 +13,7 @@ def thatsOvens_staticSort(a):
             counter += 1
         else:
             if int(a[counter]) == counter:
-                temp = a[counter]
-                a[counter] = [temp]
+                a[counter] = [a[counter]]
             else:
                 if type(a[a[counter]]) is list:
                     a[a[counter]].append(a[counter])
