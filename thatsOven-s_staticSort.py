@@ -1,9 +1,9 @@
 def thatsOvens_staticSort(a):
-    M = max(a) 
+    M = max(a)
     size = len(a)
-    if M > (size - 1):
-        for i in range(M - size + 1):
-            a.append([])
+    if M > size:
+        for _ in range(M - size + 1):
+            a.insert(0, [])
     if M == size:
         a.insert(0, [])
     counter = 0
@@ -19,13 +19,11 @@ def thatsOvens_staticSort(a):
                     a[a[counter]].append(a[counter])
                     a[counter] = []
                 else:
-                    temp = int(a[a[counter]])
-                    a[a[counter]] = [a[counter]]
-                    a[counter] = temp
-            listcount += 1
+                    a[a[counter]], a[counter] = [a[counter]], a[a[counter]]
+            listcount += 1 
     size = len(a)
     counter = 0
-    for i in range(size):
+    for _ in range(size):
         l = len(a[counter])
         if l == 0:
             a.remove(a[counter])
@@ -36,6 +34,7 @@ def thatsOvens_staticSort(a):
         else:
             temp = a[counter].copy()
             a.remove(a[counter])
-            for j in range(len(temp)):
+            lt = len(temp)
+            for j in range(lt):
                 a.insert(counter, temp[j])
-                counter += 1
+            counter += lt
