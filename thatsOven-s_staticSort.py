@@ -12,14 +12,14 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-def insertion_sort(InputList, n):
+def insertion_sort(arr, n):
     for i in range(1, n):
         j = i-1
-        nxt_element = InputList[i]
-        while (InputList[j] > nxt_element) and (j >= 0):
-            InputList[j+1] = InputList[j]
-            j=j-1
-        InputList[j+1] = nxt_element
+        key = arr[i]
+        while (arr[j] > key) and (j >= 0):
+            arr[j+1] = arr[j]
+            j-=1
+        arr[j+1] = key
 from itertools import chain
 def thatsOvens_staticSort(a):
     M = max(a)
