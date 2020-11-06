@@ -12,7 +12,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-from itertools import chain
 
 
 # Copied and Pythonified from https://github.com/MusicTheorist/ArrayVisualizer/blob/master/src/templates/HeapSorting.java
@@ -81,4 +80,12 @@ def thatsOvens_staticSort(a):
                 MaxHeapSort.sort(a[i], 0, lt)
             else:
                 insertion_sort(a[i], lt)
-    return list(chain.from_iterable(a))
+    array_join(a)
+
+
+def array_join(arr):
+    i = 0
+    while i < len(arr):
+        count = len(arr[i])
+        arr[i:i+1] = arr[i]
+        i += count
