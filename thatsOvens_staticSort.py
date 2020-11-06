@@ -15,6 +15,35 @@
 from itertools import chain
 
 
+# Copied and Pythonified from https://github.com/MusicTheorist/ArrayVisualizer/blob/master/src/templates/HeapSorting.java
+# Min heap support was also removed
+class MaxHeapSort:
+    @classmethod
+    def siftDown(cls, arr, root, dist, start):
+        while root <= dist // 2:
+            leaf = 2 * root
+            if leaf < dist and arr[start + leaf - 1] < arr[start + leaf]:
+                leaf += 1
+            if arr[start + root - 1] < arr[start + leaf - 1]:
+                arr[start + root - 1], arr[start + leaf - 1] = arr[start + leaf -1], arr[start + root - 1]
+                root = leaf
+            else:
+                break
+
+    @classmethod
+    def heapify(cls, arr, low, high):
+        length = high - low
+        for i in range(length // 2, 0, -1):
+            cls.siftDown(arr, i, length, low)
+
+    @classmethod
+    def sort(cls, arr, start, n):
+        cls.heapify(arr, start, n)
+        for i in range(n - start, 1, -1):
+            arr[start], arr[start + i - 1] = arr[start + i - 1], arr[start]
+            cls.siftDown(arr, 1, i - 1, start)
+
+
 def insertion_sort(arr, n):
     for i in range(1, n):
         j = i-1
@@ -48,5 +77,8 @@ def thatsOvens_staticSort(a):
     for i in range(len(a)):
         lt = len(a[i])
         if lt > 1:
-            insertion_sort(a[i], lt)
+            if lt > 16:
+                MaxHeapSort.sort(a[i], 0, lt)
+            else:
+                insertion_sort(a[i], lt)
     return list(chain.from_iterable(a))
